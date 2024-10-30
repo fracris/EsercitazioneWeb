@@ -1,0 +1,58 @@
+h2, h3 {
+    color: #8b0000;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Stile della navbar */
+.nav-link {
+    color: #ffcccc;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: #000000;
+}
+
+.active-red {
+    background-color: #ff6666;
+    border-color: #ff6666;
+}
+
+/* Stile dei bottoni */
+.btn-primary {
+    background-color: #8b0000;
+    border-color: #8b0000;
+}
+
+.btn-primary:hover {
+    background-color: #ff6666;
+    border-color: #ff6666;
+}
+
+/* Sfondo delle sezioni */
+.bg-dark-red {
+    background-color: #8b0000 !important;
+}
+
+/* Bordo delle card */
+.border-light-red {
+    border-color: #ff6666 !important;
+}
+
+/* Stile per le citazioni */
+.blockquote-footer {
+    color: #ff6666;
+}
+
+/* Colore di sfondo del footer */
+footer {
+    background-color: #8b0000;
+    color: #ffcccc;
+}
+
+/* Colore del testo delle sezioni */
+.text-pink {
+    color: #ffcccc;
+}
