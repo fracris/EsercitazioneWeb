@@ -1,5 +1,8 @@
 console.log('HELLO JS');
 
+document.getElementById("cancelAdd").addEventListener("click", function() {
+    document.getElementById("fishForm").style.display = "none";
+});
 
 // Evento click sul pulsante "Aggiungi un nuovo pesce"
 document.getElementById("addFishButton").addEventListener("click", function() {
@@ -77,7 +80,6 @@ function updateFishNumbers(tableBody) {
         document.getElementById('fishNumber').disabled = true;
         document.getElementById('fishNumber').placeholder="No fishes found";
     }
-
 }
 
 function addNewRowV2(tableBody, name, weight, origin){

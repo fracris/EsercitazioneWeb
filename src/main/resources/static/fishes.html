@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/addFish.js" defer></script>
     <script src="js/removeFish.js" defer></script>
+    <script src="js/filter.js" defer></script>
 
 </head>
 <body>
@@ -48,12 +49,26 @@
         </div>
     </div>
 
-    <!-- Bottoni di aggiunta e rimozione di pesci -->
-    <div class="text-end mb-3">
-        <button id="addFishButton" class="btn btn-outline-dark btn-sm">
-            <i class="fas fa-plus"></i> Add a New Fish
+    <div class="mb-2">
+        <button id="sortFishName" class="btn btn-light btn-sm">
+            <i id="name-icon" class="fas fa-sort-alpha-up"></i> Sort by Name
         </button>
-        <button id="removeFishButton" class="btn btn-outline-danger btn-sm">
+    </div>
+    <!-- Bottoni di aggiunta e rimozione di pesci -->
+    <div class="mb-2">
+        <button id="sortFishWeight" class="btn btn-light btn-sm">
+            <i id="weight-icon" class="fas fa-sort-numeric-up"></i> Sort by Weight
+        </button>
+        <button id="addFishButton" class="btn btn-outline-dark btn-sm float-end">
+            <i  class="fas fa-plus"></i> Add a New Fish
+        </button>
+    </div>
+
+    <div class="mb-4">
+        <button id="sortFishOrigin" class="btn btn-light btn-sm">
+            <i id="origin-icon" class="fas fa-sort-alpha-up"></i> Sort by Origin
+        </button>
+        <button id="removeFishButton" class="btn btn-outline-danger btn-sm float-end">
             <i class="fas fa-minus"></i> Remove Fish
         </button>
     </div>
@@ -74,28 +89,28 @@
             <tbody>
             <tr>
                 <td><span class="badge bg-dark-red fish-number">1</span></td>
-                <td>Atlantic Salmon</td>
+                <td>Salmon</td>
                 <td><span class="badge bg-dark">1.5</span></td>
                 <td>North Atlantic</td>
                 <td><button class="btn btn-danger btn-sm deleteButton"><i class="fa-solid fa-trash"></i></button></td>
             </tr>
             <tr>
                 <td><span class="badge bg-dark-red fish-number">2</span></td>
-                <td>Yellowfin Tuna</td>
+                <td>Tuna</td>
                 <td><span class="badge bg-dark">2.2</span></td>
                 <td>Indian Ocean</td>
                 <td><button class="btn btn-danger btn-sm deleteButton"><i class="fa-solid fa-trash"></i></button></td>
             </tr>
             <tr>
                 <td><span class="badge bg-dark-red fish-number">3</span></td>
-                <td>Red Snapper</td>
+                <td>Snapper</td>
                 <td><span class="badge bg-dark">0.8</span></td>
                 <td>Gulf of Mexico</td>
                 <td><button class="btn btn-danger btn-sm deleteButton"><i class="fa-solid fa-trash"></i></button></td>
             </tr>
             <tr>
                 <td><span class="badge bg-dark-red fish-number">4</span></td>
-                <td>Pacific Halibut</td>
+                <td>Halibut</td>
                 <td><span class="badge bg-dark">1.2</span></td>
                 <td>North Pacific</td>
                 <td><button class="btn btn-danger btn-sm deleteButton"><i class="fa-solid fa-trash"></i></button></td>
@@ -107,10 +122,41 @@
     <!-- Form per aggiungere un nuovo pesce -->
     <div id="fishForm" style="display: none; margin-top: 20px;">
         <h3>Add a New Fish</h3>
-        <form id="newFishForm">
-            <div class="mb-3 input-group">
+        <form id="newFishForm" class="was-validated">
+            <div class="mb-3 mt-4 input-group">
                 <span class="input-group-text bg-dark text-white">Name</span>
-                <input type="text" id="name" class="form-control" placeholder="Enter fish name" required>
+                <select id="name" class="form-control" required>
+                    <option value="" disabled selected>Select fish name</option>
+                    <option value="Anchovy">Anchovy</option>
+                    <option value="Barracuda">Barracuda</option>
+                    <option value="Bass">Bass</option>
+                    <option value="Bluefish">Bluefish</option>
+                    <option value="Carp">Carp</option>
+                    <option value="Catfish">Catfish</option>
+                    <option value="Cod">Cod</option>
+                    <option value="Eel">Eel</option>
+                    <option value="Flounder">Flounder</option>
+                    <option value="Grouper">Grouper</option>
+                    <option value="Haddock">Haddock</option>
+                    <option value="Halibut">Halibut</option>
+                    <option value="Herring">Herring</option>
+                    <option value="Mackerel">Mackerel</option>
+                    <option value="Marlin">Marlin</option>
+                    <option value="Perch">Perch</option>
+                    <option value="Pike">Pike</option>
+                    <option value="Pollock">Pollock</option>
+                    <option value="Salmon">Salmon</option>
+                    <option value="Sardine">Sardine</option>
+                    <option value="Shad">Shad</option>
+                    <option value="Snapper">Snapper</option>
+                    <option value="Swordfish">Swordfish</option>
+                    <option value="Tilapia">Tilapia</option>
+                    <option value="Trout">Trout</option>
+                    <option value="Tuna">Tuna</option>
+                    <option value="Walleye">Walleye</option>
+                    <option value="Whitefish">Whitefish</option>
+                    <option value="Yellowtail">Yellowtail</option>
+                </select>
             </div>
             <div class="mb-3 input-group">
                 <span class="input-group-text bg-dark text-white">Weight (kg)</span>
@@ -118,21 +164,47 @@
             </div>
             <div class="mb-3 input-group">
                 <span class="input-group-text bg-dark text-white">Origin</span>
-                <input type="text" id="origin" class="form-control" placeholder="Enter fishing area" required>
+                <select id="origin" class="form-control"  required>
+                    <option value="" disabled selected>Select fishing area</option>
+                    <option value="Arctic Ocean">Arctic Ocean</option>
+                    <option value="Atlantic Ocean">Atlantic Ocean</option>
+                    <option value="Baltic Sea">Baltic Sea</option>
+                    <option value="Bay of Bengal">Bay of Bengal</option>
+                    <option value="Bering Sea">Bering Sea</option>
+                    <option value="Caribbean Sea">Caribbean Sea</option>
+                    <option value="East China Sea">East China Sea</option>
+                    <option value="Gulf of Alaska">Gulf of Alaska</option>
+                    <option value="Gulf of Mexico">Gulf of Mexico</option>
+                    <option value="Indian Ocean">Indian Ocean</option>
+                    <option value="Mediterranean Sea">Mediterranean Sea</option>
+                    <option value="North Atlantic">North Atlantic</option>
+                    <option value="North Pacific">North Pacific</option>
+                    <option value="Norwegian Sea">Norwegian Sea</option>
+                    <option value="Red Sea">Red Sea</option>
+                    <option value="Sea of Japan">Sea of Japan</option>
+                    <option value="South Atlantic">South Atlantic</option>
+                    <option value="South Pacific">South Pacific</option>
+                    <option value="Southern Ocean">Southern Ocean</option>
+                    <option value="Tasman Sea">Tasman Sea</option>
+                    <option value="Western Indian Ocean">Western Indian Ocean</option>
+                    <option value="Yellow Sea">Yellow Sea</option>
+                </select>
             </div>
-            <button type="submit" class="btn btn-primary">Add Fish</button>
+            <button type="submit" class="btn btn-primary btn-sm">Add Fish</button>
+            <button id="cancelAdd" class="btn btn-secondary btn-sm">Cancel</button>
         </form>
     </div>
 
     <!-- Form per rimuovere un pesce specifico -->
     <div id="removeFishForm" class="col-md-6" style="display: none; margin-top: 10px;">
         <h3>Remove a Fish</h3>
-        <form id="removeFishByNumberForm" onsubmit="removeFishByNumber(event)">
+        <form id="removeFishByNumberForm" class="was-validated">
             <div class="col-md-6 mt-3 mb-3 input-group">
                 <span class="input-group-text bg-dark text-white">Number</span>
                 <input type="number" id="fishNumber" class="form-control" min="1" max="4" placeholder="Min: 1, Max: 4" required>
             </div>
-            <button type="submit" class="btn btn-danger btn-sm mb-3">Remove</button>
+            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+            <button id="cancelRemove" class="btn btn-secondary btn-sm">Cancel</button>
         </form>
     </div>
 

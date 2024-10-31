@@ -1,11 +1,14 @@
+document.getElementById("cancelRemove").addEventListener("click", function() {
+    document.getElementById("removeFishForm").style.display = "none";
+});
+
 // DELETE ROW ON DEMAND
 document.getElementById("removeFishButton").addEventListener("click", function() {
     document.getElementById("removeFishForm").style.display = "block";
     document.getElementById("fishForm").style.display = "none";
 });
 
-// Funzione per rimuovere il pesce in base al numero
-function removeFishByNumber(event) {
+document.getElementById("removeFishByNumberForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Impedisce il submit del form
 
     // Recupera il numero del pesce da rimuovere
@@ -14,16 +17,17 @@ function removeFishByNumber(event) {
     // Ottiene tutte le righe della tabella, escluse le intestazioni
     const rows =document.getElementById("fishTable").querySelectorAll('tr');
 
-    // Controlla se il numero è valido
-    if (fishNumber > 0 && fishNumber <= rows.length) {
-        rows[fishNumber].remove(); // Rimuove la riga corrispondente (indice base 0)
-        document.getElementById("removeFishForm").style.display = "none"; // Nasconde il form
-        document.getElementById("removeFishByNumberForm").reset(); // Resetta il campo del form
-        const tableBody = document.getElementById("fishTable").getElementsByTagName('tbody')[0];
-        updateFishNumbers(tableBody);
-    } else {
-        alert("Numero pesce non valido!"); // Avviso per numero non valido
-    }
+    rows[fishNumber].remove(); // Rimuove la riga corrispondente (indice base 0)
+    document.getElementById("removeFishForm").style.display = "none"; // Nasconde il form
+    document.getElementById("removeFishByNumberForm").reset(); // Resetta il campo del form
+    const tableBody = document.getElementById("fishTable").getElementsByTagName('tbody')[0];
+
+    updateFishNumbers(tableBody);
+});
+
+// Funzione per rimuovere il pesce in base al numero
+function removeFishByNumber(event) {
+
 }
 
 // DELETE specific row
