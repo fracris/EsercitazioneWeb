@@ -9,6 +9,7 @@ function validate(event) {
         return;
     }
     document.getElementById('formSubmit').submit();
+    document.getElementById('formSubmit').reset();
 }
 
 window.addEventListener("load", function(){

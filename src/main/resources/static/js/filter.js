@@ -6,9 +6,9 @@ function sortTableByColumn(table, columnIndex, ascending = true) {
         const cellA = rowA.cells[columnIndex].textContent.trim();
         const cellB = rowB.cells[columnIndex].textContent.trim();
 
-        if (columnIndex === 2) {  // Colonna 'Year', ordina come numeri
+        if (columnIndex === 2) {
             return ascending ? cellA - cellB : cellB - cellA;
-        } else {  // Colonna 'Title', ordina alfabeticamente
+        } else {
             return ascending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
         }
     });
@@ -46,7 +46,7 @@ window.addEventListener("load", function() {
             icon.classList.remove('fa-arrow-up-1-9');
             icon.classList.add('fa-arrow-down-1-9');
         }
-        weightAscending = !weightAscending;  // Inverte l'ordine
+        weightAscending = !weightAscending;
     });
     document.getElementById("sortFishOrigin").addEventListener("click", function() {
         sortTableByColumn(table, 3, originAscending);
@@ -58,7 +58,7 @@ window.addEventListener("load", function() {
             icon.classList.remove('fa-arrow-up-a-z');
             icon.classList.add('fa-arrow-down-a-z');
         }
-        originAscending = !originAscending;  // Inverte l'ordine
+        originAscending = !originAscending;
     });
 });
 

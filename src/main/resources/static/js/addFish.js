@@ -6,32 +6,23 @@ document.getElementById("cancelAdd").addEventListener("click", function() {
 
 // Evento click sul pulsante "Aggiungi un nuovo pesce"
 document.getElementById("addFishButton").addEventListener("click", function() {
-    // Mostra il form per aggiungere un nuovo pesce impostando "display: block"
     document.getElementById("fishForm").style.display = "block";
-    // nascondi il form per rimuovere il pesce
     document.getElementById("removeFishForm").style.display = "none";
 });
 
 // Evento submit sul form "newFishForm"
 document.getElementById("newFishForm").addEventListener("submit", function(event) {
-    // Impedisce il comportamento di submit predefinito (invio dei dati)
     event.preventDefault();
 
-    // Recupera i valori inseriti dall'utente nei campi del form
     const name = document.getElementById("name").value;
     const weight = document.getElementById("weight").value;
     const origin = document.getElementById("origin").value;
 
-    // Riferimento alla tabella dove verranno aggiunti i nuovi pesci
     const tableBody = document.getElementById("fishTable").getElementsByTagName('tbody')[0];
 
     addNewRowV1(tableBody , name , weight , origin);
 
-//    addNewRowV2(tableBody , name , weight , origin);
-
-    // Nasconde il form di aggiunta pesce dopo l'inserimento
     document.getElementById("fishForm").style.display = "none";
-    // Reset dei campi del form per future aggiunte
     document.getElementById("newFishForm").reset();
 });
 
@@ -52,13 +43,13 @@ function addNewRowV1(tableBody, name, weight, origin) {
     // Aggiunge la nuova riga alla tabella
     tableBody.appendChild(newRow);
 
-    // Riassegna i numeri progressivi
+    // Riassegna i numeri dei pesci
     updateFishNumbers(tableBody);
 
     // Aggiunge l'evento click al pulsante "Elimina" della nuova riga
     newRow.querySelector(".deleteButton").addEventListener("click", function() {
-        newRow.remove(); // Rimuove la riga
-        updateFishNumbers(tableBody); // Aggiorna i numeri dopo la rimozione
+        newRow.remove();
+        updateFishNumbers(tableBody);
     });
 }
 
@@ -67,7 +58,7 @@ function updateFishNumbers(tableBody) {
     const rows = tableBody.querySelectorAll("tr");
     rows.forEach((row, index) => {
         const numberCell = row.querySelector(".fish-number");
-        numberCell.textContent = index + 1; // Imposta il numero progressivo
+        numberCell.textContent = index + 1;
     });
     let totFishes=document.getElementById('total-fishes');
     totFishes.textContent = "Total fishes: "+rows.length;
@@ -81,7 +72,7 @@ function updateFishNumbers(tableBody) {
         document.getElementById('fishNumber').placeholder="No fishes found";
     }
 }
-
+/*
 function addNewRowV2(tableBody, name, weight, origin){
     // Crea una nuova riga nella tabella
     const newRow = tableBody.insertRow();
@@ -100,3 +91,4 @@ function addNewRowV2(tableBody, name, weight, origin){
 
     console.log('Adding new Row , with method 2');
 }
+*/
