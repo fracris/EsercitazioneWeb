@@ -34,16 +34,14 @@ public class DBManager {
     }
 
     public PiattoDao getPiattoDao() {
-        if (piattoDao == null) {
-            piattoDao = new PiattoDaoJDBC(getConnection());
-        }
+        if (piattoDao == null)
+            piattoDao = new PiattoDaoJDBC();
         return piattoDao;
     }
 
     public RistoranteDao getRistoranteDao() {
-        if (ristoranteDao == null) {
-            ristoranteDao = new RistoranteDaoJDBC(getConnection());
-        }
+        if (ristoranteDao == null)
+            ristoranteDao = new RistoranteDaoJDBC();
         return ristoranteDao;
     }
 

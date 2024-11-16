@@ -5,18 +5,19 @@ import com.dipartimento.demowebapplications.model.Ristorante;
 import com.dipartimento.demowebapplications.persistence.DBManager;
 import com.dipartimento.demowebapplications.persistence.dao.PiattoDao;
 import com.dipartimento.demowebapplications.persistence.dao.RistoranteDao;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class PiattoDaoJDBC implements PiattoDao {
 
-    Connection connection;
+    private final Connection connection;
 
-
-    public PiattoDaoJDBC(Connection conn){
-        this.connection = conn;
+    public PiattoDaoJDBC() {
+        this.connection = DBManager.getInstance().getConnection();
     }
 
     @Override

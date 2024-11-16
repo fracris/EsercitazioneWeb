@@ -5,9 +5,9 @@ import com.dipartimento.demowebapplications.model.Ristorante;
 import java.util.List;
 
 public interface RistoranteDao {
-    public List<Ristorante> findAll();
-    public Ristorante findByPrimaryKey(String nome);
-    public void save(Ristorante ristorante);
-    public void delete(Ristorante ristorante);
+    List<Ristorante> findAll();
+    Ristorante findByPrimaryKey(String nome);
+    void save(Ristorante ristorante);
+    void delete(Ristorante ristorante);
     List<Ristorante> findAllByPiattoName(String piattoNome);
 }
